@@ -6,6 +6,8 @@ import Link from "next/link";
 import Timestamp from "./Timestamp";
 import { Card } from "./ui/card";
 import PostOptions from "./PostOptions";
+import Comments from "./Comments";
+import PostActions from "./PostActions";
 
 async function Post({ post }: { post: PostWithExtras }) {
   const session = await auth();
@@ -48,6 +50,8 @@ async function Post({ post }: { post: PostWithExtras }) {
         />
       </Card>
 
+      <PostActions post={post} userId={userId} className="px-3 sm:px-0" />
+
       {post.caption && (
         <div className="text-sm leading-none flex items-center space-x-2 font-medium px-3 sm:px-0">
           <Link href={`/dashboard/${username}`} className="font-bold">
@@ -56,6 +60,7 @@ async function Post({ post }: { post: PostWithExtras }) {
           <p>{post.caption}</p>
         </div>
       )}
+      <Comments postId={post.id} comments={post.comments} user={session.user} />
     </div>
   );
 }
