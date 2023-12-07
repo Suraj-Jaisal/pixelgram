@@ -153,7 +153,6 @@ export async function fetchProfile(username: string) {
 
     return data;
   } catch (error) {
-    console.error("Database Error:", error);
     throw new Error("Failed to fetch profile");
   }
 }
@@ -196,7 +195,6 @@ export async function fetchSavedPostsByUsername(username: string) {
 
     return data;
   } catch (error) {
-    console.error("Database Error:", error);
     throw new Error("Failed to fetch saved posts");
   }
 }

@@ -22,23 +22,7 @@ const links = [
     icon: Search,
     hideOnMobile: true,
   },
-  { name: "Explore", href: "/dashboard/explore", icon: Compass },
-  {
-    name: "Reels",
-    href: "/dashboard/reels",
-    icon: Clapperboard,
-  },
-  {
-    name: "Messages",
-    href: "/dashboard/messages",
-    icon: MessageCircle,
-  },
-  {
-    name: "Notifications",
-    href: "/dashboard/notifications",
-    icon: Heart,
-    hideOnMobile: true,
-  },
+
   {
     name: "Create",
     href: "/dashboard/create",
