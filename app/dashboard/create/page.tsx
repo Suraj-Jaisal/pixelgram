@@ -71,12 +71,16 @@ function CreatePage() {
             >
               {!!fileUrl ? (
                 <div className="h-96 md:h-[450px] overflow-hidden rounded-md">
-                  <AspectRatio ratio={1 / 1} className="relative h-full">
+                  <AspectRatio
+                    ratio={1 / 1}
+                    className="relative h-full object-contain"
+                  >
                     <Image
                       src={fileUrl}
                       alt="Post preview"
-                      fill
-                      className="rounded-md object-cover"
+                      height={200}
+                      width={140}
+                      className="rounded-md object-contain"
                     />
                   </AspectRatio>
                 </div>

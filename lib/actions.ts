@@ -9,6 +9,7 @@ import {
   BookmarkSchema,
   CreateComment,
   CreatePost,
+  DeleteComment,
   DeletePost,
   LikeSchema,
 } from "./schemas";
@@ -248,5 +249,36 @@ export async function bookmarkPost(value: FormDataEntryValue | null) {
     return {
       message: "Database Error: Failed to Bookmark Post.",
     };
+  }
+}
+
+export async function deleteComment(formData: FormData) {
+  const userId = await getUserId();
+
+  const { id } = DeleteComment.parse({
+    id: formData.get("id"),
+  });
+
+  const comment = await prisma.comment.findUnique({
+    where: {
+      id,
+      userId,
+    },
+  });
+
+  if (!comment) {
+    throw new Error("Comment not found");
+  }
+
+  try {
+    await prisma.comment.delete({
+      where: {
+        id,
+      },
+    });
+    revalidatePath("/dashboard");
+    return { message: "Deleted Comment." };
+  } catch (error) {
+    return { message: "Database Error: Failed to Delete Comment." };
   }
 }
