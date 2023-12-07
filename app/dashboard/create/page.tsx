@@ -78,8 +78,7 @@ function CreatePage() {
                     <Image
                       src={fileUrl}
                       alt="Post preview"
-                      height={200}
-                      width={140}
+                      fill
                       className="rounded-md object-contain"
                     />
                   </AspectRatio>

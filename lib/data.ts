@@ -105,7 +105,6 @@ export async function fetchPostsByUsername(username: string, postId?: string) {
 
     return data;
   } catch (error) {
-    console.error("Database Error:", error);
     throw new Error("Failed to fetch posts");
   }
 }
